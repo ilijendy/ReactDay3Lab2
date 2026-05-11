@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../context/CartContext'
 
 function ProductCard({ product }) {
     const navigate = useNavigate()
@@ -35,8 +36,8 @@ function ProductCard({ product }) {
 
             <p className="text-blue-600 font-bold">${product.price}</p>
 
-            <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg 
-        hover:bg-blue-700 transition text-sm">
+            <button 
+                className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition text-sm">
                 Add to Cart
             </button>
         </div>

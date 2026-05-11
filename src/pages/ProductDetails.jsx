@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axiosInstance from '../api/axiosInstance'
+import { useCart } from '../context/CartContext'
 
 function ProductDetails() {
   const { id } = useParams()
@@ -8,6 +9,7 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState('')
   const [quantity, setQuantity] = useState(1)
+  const { addToCart } = useCart()
 
   useEffect(() => {
     axiosInstance.get(`/products/${id}`)
@@ -105,7 +107,9 @@ function ProductDetails() {
               hover:bg-blue-700 transition font-semibold">
               Buy Now
             </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-3 
+            <button 
+              onClick={() => addToCart(product, quantity)}
+              className="border-2 border-blue-600 text-blue-600 px-8 py-3 
               rounded-xl hover:bg-blue-50 transition font-semibold">
               Add to Cart
             </button>
